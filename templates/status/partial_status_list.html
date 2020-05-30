@@ -7,13 +7,13 @@
             <td>{{status.status_time}}</td>
 
             {% if status.status_type == 'ONLINE' %}
-                <td class="badge badge-success">{{status.status_type}}</td>
+                <td><span class="badge badge-success">{{status.status_type}}</span> </td>
             {% elif status.status_type == 'OFFLINE' %}
-                <td class="badge badge-danger">{{status.status_type}}</td>
+                <td><span class="badge badge-danger">{{status.status_type}}</span></td>
             {% elif status.status_type == 'TIMED-OUT' %}
-                <td class="badge badge-warning">{{status.status_type}}</td>
+                <td><span class="badge badge-warning">{{status.status_type}}</span></td>
             {% else %}
-                <td class="badge badge-primary">{{status.status_type}}</td>
+                <td><span class="badge badge-primary">{{status.status_type}}</span></td>
             {% endif %}
             <td>{{status.status_note}}</td>
             <td>

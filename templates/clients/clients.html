@@ -10,27 +10,30 @@
         {% include 'base/navbar.html' %}
         <br>
         <div class="container">
-            <div class="col col-2 mb-2 float-left">
-                <strong>{{user.username}}</strong> :: <small>user</small>
-            </div>
-            <div class="col col-4 float-right">
-                <button type="button" class="btn btn-primary btn-sm js-create-client mb-2 float-right" data-url="{% url 'client:create_client' %}">
-                    New client   
-                </button>
-                <button type="button" class="btn btn-primary btn-sm js-pdf-client mx-2 float-right" onclick="window.open('/clients/report/')">
-                    PDF 
-                </button>
+            <div class="row mb-2">
+                <div class="col col-2 mb-2 float-left">
+                    <form method="POST">
+                        <input type="text" class="form-control" style="width: 300px;" placeholder="search">
+                    </form>
+                </div>
+                <div class="col col-10 float-right">
+                    <button type="button" class="btn btn-primary btn-sm js-create-client mb-2 float-right" data-url="{% url 'client:create_client' %}">
+                        New client   
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm js-pdf-client mx-2 float-right" onclick="window.open('/clients/report/')">
+                        PDF 
+                    </button>
+                </div>
             </div>
             
             <div class="table-responsive">
-                <table class="table table-hover" id="clientList">
+                <table class="table table-hover table-sm" id="clientList">   
                     <thead class="thead-light">
                         <tr>
                             <th>#</th>
                             <th>Client No</th>
                             <th>Name</th>
                             <th>Address</th>
-                            <th>Email</th>
                             <th>IP Address</th>
                             <th>...</th>
                         </tr>
@@ -47,11 +50,14 @@
             </div>
         </div>
     {% else %}
-        <div class="col-5 mx-auto">
-            <br>
-            <div class="mt-4">
-                <h5>You are not logged in</h5>
-                <a class="btn btn-primary btn-sm" href="{% url 'login' %}">login now.</a>
+        <div class="row justify-content-center">
+            <div class="col-5 mt-4 card">
+                <h3 class="mt-2">TJ-101 System</h3>
+                <hr>
+                <div class="mt-4">
+                    <h5>You are not logged in</h5>
+                    <a class="btn btn-primary btn-sm mb-4" href="{% url 'login' %}">login now.</a>
+                </div>
             </div>
         </div>
     {% endif %}

@@ -9,10 +9,19 @@
         {% include 'base/navbar-monitor.html' %}
         <br>
             <div class="container">
-                <div class="col col-2 mb-2 float-left">
-                    <strong>{{user.username}}</strong> :: <small>user</small>
+                <div class="row mb-2">
+                    <div class="col col-2 mb-2 float-left">
+                        <form method="POST">
+                            <input type="text" class="form-control" style="width: 300px;" placeholder="search">
+                        </form>
+                    </div>
+                    <div class="col col-10 float-right">
+                        <button type="button" class="btn btn-primary btn-sm js-pdf-client mx-2 float-right">
+                            PDF 
+                        </button>
+                    </div>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive table-sm">
                     <table class="table table-hover" id="monitorTable">
                         <thead class="thead-light">
                             <tr>

@@ -23,6 +23,7 @@ urlpatterns = [
     # path('clients/<int:id>/update/', client_views.edit_client, name='update_client'),
     path('', views.list_client, name='list-client'),
     path('clients/', include('client.urls', namespace='client')),
+    path('collection/', include('collection.urls', namespace='collection')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

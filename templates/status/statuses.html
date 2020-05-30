@@ -9,20 +9,23 @@
         {% include 'base/navbar-status.html' %}
         <br>
             <div class="container">
-                <div class="col col-2 mb-2 float-left">
-                    <strong>{{user.username}}</strong> :: <small>user</small>
-                </div>
-                <div class="col col-4 mb-2 float-right">
-                    <button type="button" class="btn btn-primary btn-sm js-pdf-client mx-2 float-right" onclick="window.open('/clients/report/')">
-                        PDF 
-                    </button>
-                    <button type="button" class="btn btn-primary btn-sm js-create-status mb-2 float-right" data-url="{% url 'client:create_status_1' %}">
-                        <span class="glyphicon glyphicon-plus"></span> New status   
-                    </button>
-                    
+                <div class="row mb-2">
+                    <div class="col col-2 mb-2 float-left">
+                        <form method="POST">
+                            <input type="text" class="form-control" style="width: 300px;" placeholder="search">
+                        </form>
+                    </div>
+                    <div class="col col-10 mb-2 float-right">
+                        <button type="button" class="btn btn-primary btn-sm js-pdf-client mx-2 float-right" onclick="window.open('/clients/report/')">
+                            PDF 
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm js-create-status mb-2 float-right" data-url="{% url 'client:create_status_1' %}">
+                            <span class="glyphicon glyphicon-plus"></span> New status   
+                        </button>
+                    </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover" id="statusTable">
+                    <table class="table table-hover table-sm" id="statusTable">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>
