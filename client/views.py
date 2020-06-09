@@ -8,7 +8,7 @@ from django.views.generic import ListView, DetailView, View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import get_template
 
-from .models import Client, Status
+from .models import Client, Status, Bill
 from .forms import ClientForm, StatusForm
 
 from .utils import render_to_pdf
