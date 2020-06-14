@@ -1,6 +1,6 @@
 {% for client in clients %}
     <tr>
-        <td>{{forloop.counter}}</td>
+        <td>{{client.pk}}</td>
         <td>{{client.client_no}}</td>
         <td>{{client}}</td>
         <td>{{client.client_address}}</td>
@@ -15,7 +15,7 @@
                 Graph
             </button>
             <button type="button"
-                class="btn btn-outline-success btn-sm js-create-status" data-url="{% url 'client:create_status' client %}">
+                class="btn btn-outline-success btn-sm js-create-status" data-url="{% url 'client:create_status' client.pk %}">
                 Add Status
             </button>
         </td>

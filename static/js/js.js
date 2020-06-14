@@ -2,6 +2,7 @@ $(function () {
 
       var loadForm = function () {
         var btn = $(this);
+        console.log(btn.attr('data-url'));
         $.ajax({
           url: btn.attr('data-url'),
           type: 'get',
@@ -51,9 +52,53 @@ $(function () {
   $("#clientList").on("click", ".js-delete-client", loadForm);
   $("#divClient").on("submit", ".js-client-delete-form", saveForm);
 
+  
   //ping client
   $("#monitorTable").on('click', '.js-ping-client', loadForm);
- 
+
+
+// Bills
+var loadFormBill = function() {
+  var btn = $(this);
+  $.ajax({
+    url: btn.attr('data-url'),
+    type: 'get',
+    dataType: 'json',
+    beforeSend: function () {
+      $("#div_bills").modal("show");
+    },
+    success: function (data) {
+      $("#div_bills .modal-content").html(data.html_form);
+    }
+  });
+};
+
+var saveFormBill = function() {
+    var form = $(this);
+    $.ajax({
+      url: form.attr("action"),
+      data: form.serialize(),
+      type: form.attr("method"),
+      dataType: 'json',
+      success: function (data) {
+        if (data.form_is_valid) {
+          $("#tbl_bills tbody").html(data.bills_list);
+          $("#div_bills").modal("hide");
+        }
+        else {
+          $("#div_bills .modal-content").html(data.html_form);
+        }
+      }
+    });
+    return false;
+};
+
+// Create bill
+$(".js-create-bills").click(loadFormBill);
+$("#div_bills").on("submit", ".js-create-bill-form", saveFormBill);
+
+
+  
 
 $("#monitorTable").on('click', '.js-create-status', function () {
       var btn = $(this);
@@ -203,4 +248,11 @@ $("#newMonitor").on('submit', '.js-create-status-form', function () {
             return false;
           });
 
+      $("#id_client").change(function(){
+        this.form.submit();
+      });
+      
+      $("#id_status_type").change(function(){
+        this.form.submit();
+      });
 });

@@ -57,7 +57,7 @@ class Bill(models.Model):
         verbose_name_plural = 'billings'
 
     def __str__(self):
-        return self.bill_no
+        return str(self.bill_no)
     
 class Payment(models.Model):
     CASH = 'CASH'

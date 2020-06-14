@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/home/josh/Documents/django/hero/monitor/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
+}

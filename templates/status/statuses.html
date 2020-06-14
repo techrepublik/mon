@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     Status List
@@ -10,12 +11,14 @@
         <br>
             <div class="container">
                 <div class="row mb-2">
-                    <div class="col col-2 mb-2 float-left">
-                        <form method="POST">
-                            <input type="text" class="form-control" style="width: 300px;" placeholder="search">
+                    <div class="col-6 mb-2 float-left">
+                        <form method="GET">
+                            {% for field in filter.form  %}
+                                {{field}}
+                            {% endfor %}
                         </form>
                     </div>
-                    <div class="col col-10 mb-2 float-right">
+                    <div class="col mb-2 float-right">
                         <button type="button" class="btn btn-primary btn-sm js-pdf-client mx-2 float-right" onclick="window.open('/clients/report/')">
                             PDF 
                         </button>
@@ -28,7 +31,6 @@
                     <table class="table table-hover table-sm table-striped" id="statusTable">
                         <thead class="thead-light">
                             <tr>
-                                <th>#</th>
                                 <th>Client</th>
                                 <th>Date</th>
                                 <th>Time</th>

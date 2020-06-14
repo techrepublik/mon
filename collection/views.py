@@ -35,8 +35,12 @@ def save_bill(request, form, template_name):
     data = dict()
     if request.method == 'POST':
         if form.is_valid():
+            bill = form.save(commit=False)
+            bill.updated_by = request.user
             form.save()
             data['form_is_valid'] = True
+            bills = Bill.objects.all()
+            data['bills_list'] = render_to_string('bills/bills_list.html', {'bills':bills})
         else:
             data['form_is_valid'] = False
     

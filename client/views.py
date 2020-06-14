@@ -8,6 +8,7 @@ from django.views.generic import ListView, DetailView, View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import get_template
 
+from .filters import StatusFilter
 from .models import Client, Status, Bill
 from .forms import ClientForm, StatusForm
 
@@ -103,8 +104,11 @@ def monitor_ping(request, pk):
 #status
 def status_list(request):
     statuses = Status.objects.all()
+
+    status_filter = StatusFilter(request.GET, queryset=statuses)
+
     page = request.GET.get('page', 1)
-    paginator = Paginator(statuses, 10)
+    paginator = Paginator(status_filter.qs, 15)
 
     try:
         statusex = paginator.page(page)
@@ -115,23 +119,26 @@ def status_list(request):
     
     flag1 = True
 
-    return render(request, 'status/statuses.html', {'statuses': statusex, 'flag1':flag1})
+    return render(request, 'status/statuses.html', {'statuses': statusex, 'flag1':flag1, 'filter': status_filter})
     # data['status_list'] = render_to_string('status/statuses.html', {'statuses': statuses})
     # return JsonResponse(data)
 
-def create_status(request, client):
+def create_status(request, pk):
     data = dict()
+    client =  get_object_or_404(Client, pk=pk)
     if (request.method == 'POST'):
-        form  = StatusForm(request.POST)
+        form  = StatusForm(request.POST, initial={'client':client})
         if (form.is_valid()):
+            # status = form.save(commit=False)
+            # status.client = client
             form.save()
             data['form_is_valid'] = True
         else:
             data['form_is_valid'] = False
     else:
-        form = StatusForm()
+        form = StatusForm(initial={'client':client})
     flag1 = False
-    context = {'form': form, 'client': client, 'flag1': flag1}
+    context = {'form': form, 'flag1': flag1}
     data['html_form'] = render_to_string('status/partial_status_create.html', context, request=request)
     return JsonResponse(data)
 

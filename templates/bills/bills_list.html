@@ -1,0 +1,25 @@
+{% for bill in bills %}
+    <tr>
+        <td>{{bill.bill_no}}</td>
+        <td>{{bill.client}}</td>
+        <td>{{bill.bill_date}}</td>
+        <td>{{bill.bill_period_01}}</td>
+        <td>{{bill.bill_period_02}}</td>
+        <td class="dt-body-right">{{bill.bill_amount}}</td>
+        <td class="dt-body-center custom-checkbox">{{bill.bill_cancelled}}</td>
+        <td>
+            <button class="btn btn-outline-primary btn-sm js-update-bill" data-url="{% url 'collection:update_bill' bill.pk %}">
+                Update
+            </button>
+            <button type="button"
+                class="btn btn-outline-danger btn-sm js-delete-client"
+                data-url="{% url 'collection:delete_bill' bill.pk %}">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+        </td>
+    </tr>
+{% empty %}
+    <tr>
+        <td colspan="7" class="text-center bg-warning">No bills</td>
+    </tr>
+{% endfor %}
