@@ -12,7 +12,7 @@ class Client(models.Model):
     client_ip       = models.CharField(default="0.0.0.0", max_length=20)
 
     def __str__(self):
-        return  "{0} - {1}".format(self.client_no, self.client_name)
+        return  self.client_name
     
     def get_absolute_url(self):
         return reverse("update_client", kwargs={"pk": self.pk})

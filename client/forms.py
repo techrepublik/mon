@@ -1,14 +1,15 @@
 from django import forms
+
+from util.dateformat import DateInput
 from .models import Client, Status
 
 class ClientForm(forms.ModelForm):
-    client_registered = forms.DateField()
     class Meta:
         model       = Client
-        fields      = ['client_no', 'client_name', 'client_address', 'client_email', 'client_registered', 'client_ip']
-
+        fields      = ['client_no', 'client_name', 'client_address', 'client_email', 'client_registered', 'client_ip', 'client_active']
         widgets = {
-            'client_registered' : forms.DateInput(format=('%d-%m-%Y'), attrs={'class': 'form-control', 'placeholder':'Select a date'})
+            'client_registered' : DateInput(),
+            'client_address': forms.Textarea(attrs={'rows':2})
         }
 
 class StatusForm(forms.ModelForm):

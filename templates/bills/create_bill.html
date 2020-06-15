@@ -9,7 +9,44 @@
           </button>
         </div>
         <div class="modal-body">
-            {{form | crispy}}
+            <div class="form-row">
+              <div class="form-group col-md-12 mb-0">
+                {{form.client | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_no | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_date | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_period_01 | as_crispy_field}}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_period_02 | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_amount | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12 mb-0">
+                {{form.bill_note | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_cancelled | as_crispy_field}}
+              </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

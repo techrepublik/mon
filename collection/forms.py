@@ -1,10 +1,8 @@
 from django import forms
 from django.forms import DateInput
 
-from client.models import Bill
-
-class DateInput(DateInput):
-    input_type = 'date'
+from util.dateformat import DateInput
+from client.models import Bill, Payment
 
 class BillForm(forms.ModelForm):
 
@@ -16,6 +14,13 @@ class BillForm(forms.ModelForm):
         widgets = {
             'bill_date': DateInput(),
             'bill_period_01': DateInput(),
-            'bill_period_02': DateInput(),  
+            'bill_period_02': DateInput(),
+            'bill_note': forms.Textarea(attrs={'rows':3}),
+            'client': forms.Select(attrs={'class': 'select-width'})
         }
-        
+
+class PaymentForm(forms.ModelForm):
+
+    class Meta:
+        model = Payment
+        fields = ['bill', 'receipt_no', 'receipt_date', ]

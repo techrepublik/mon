@@ -27,7 +27,7 @@ def update_bill(request, pk):
     if request.method == 'POST':
         form = BillForm(request.POST, instance=bill)
     else:
-        form = BillForm(instance=Bill)
+        form = BillForm(instance=bill)
 
     return save_bill(request, form, 'bills/update_bill.html')
 
@@ -54,7 +54,8 @@ def delete_bill(request, pk):
     if request.method == 'POST':
         bill.delete()
         data['form_is_valid'] = True
-        # display list method code here
+        bills = Bill.objects.all()
+        data['bills_list'] = render_to_string('bills/bills_list.html', {'bills':bills})
     else:
         data['form_is_valid'] = False
         context = {'bill':bill}

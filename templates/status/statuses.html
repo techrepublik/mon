@@ -5,6 +5,21 @@
     Status List
 {% endblock title %}
 
+{% block stylesheet %}
+    <style>
+        #id_client {
+            width: 200px;
+            height: 30px;
+        }
+
+        #id_status_type {
+            width: 150px;
+            height: 30px;
+        } 
+    </style>
+{% endblock stylesheet %}
+
+
 {% block content %}
     {% if user.is_authenticated  %}
         {% include 'base/navbar-status.html' %}

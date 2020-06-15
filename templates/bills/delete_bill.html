@@ -1,0 +1,20 @@
+{% load crispy_forms_tags %}
+
+<form method="post" action="{% url 'collection:delete_bill' bill.pk %}" class="js-bill-delete-form">
+    {% csrf_token %}
+    <div class="modal-header">
+      <h4 class="modal-title">Confirm deletion</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="lead">Record to delete:</p>
+      <div class="row mx-4">bill no :  <strong>{{ bill.bill_no }}</strong></div> 
+      <div class="row mx-4">client  :  <strong>{{ bill.client.client_name }} </strong></div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <button type="submit" class="btn btn-danger">Delete client</button>
+    </div>
+</form>

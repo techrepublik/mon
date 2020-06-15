@@ -2,12 +2,6 @@ body{
     background-color: #f4f4f4;
 }
 
-#id_client {
-    width: 200px;
-    height: 30px;
-}
-
-#id_status_type {
-    width: 150px;
-    height: 30px;
+.select-width {
+    width: 100%;
 }
