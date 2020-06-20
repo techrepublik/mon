@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/home/josh/Documents/django/hero/monitor/bin/python",
+    "python.pythonPath": "f:\\personal\\pro\\hero\\Scripts\\python.exe",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true
 }
