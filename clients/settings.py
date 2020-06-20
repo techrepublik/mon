@@ -28,7 +28,7 @@ SECRET_KEY = 'm05p=fyh(&)w%y$t%e=^0glv%#r4fn_2co@hzy6ayna!+%py^4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['heroku config:set DISABLE_COLLECTSTATIC=1', 'localhost', '127.0.0.1']
 
 
 # Application definition
