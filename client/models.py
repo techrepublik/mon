@@ -10,6 +10,7 @@ class Client(models.Model):
     client_registered = models.DateField(auto_now_add=False)
     client_active   = models.BooleanField(default=False)
     client_ip       = models.CharField(default="0.0.0.0", max_length=20)
+    client_contact  = models.CharField(default="09", max_length=50)
 
     class Meta:
         indexes = [models.Index(fields=['client_name', 'client_no'])]

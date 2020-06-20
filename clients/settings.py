@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-# import django_heroku
-# import dj_database_url
+import django_heroku
+import dj_database_url
 #from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -28,7 +28,7 @@ SECRET_KEY = 'm05p=fyh(&)w%y$t%e=^0glv%#r4fn_2co@hzy6ayna!+%py^4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 't101monitor.herokuapp.com']
 
 
 # Application definition
@@ -136,6 +136,6 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
