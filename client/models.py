@@ -11,6 +11,12 @@ class Client(models.Model):
     client_active   = models.BooleanField(default=False)
     client_ip       = models.CharField(default="0.0.0.0", max_length=20)
 
+    class Meta:
+        indexes = [models.Index(fields=['client_name', 'client_no'])]
+        ordering = ('client_name', 'client_no')
+        verbose_name = 'client'
+        verbose_name_plural = 'clients'
+
     def __str__(self):
         return  self.client_name
     
