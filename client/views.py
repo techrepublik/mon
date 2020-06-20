@@ -108,7 +108,7 @@ def status_list(request):
     status_filter = StatusFilter(request.GET, queryset=statuses)
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(status_filter.qs, 15)
+    paginator = Paginator(status_filter.qs, 20)
 
     try:
         statusex = paginator.page(page)
@@ -151,7 +151,7 @@ def create_status1(request):
             data['form_is_valid'] = True
             statuses = Status.objects.all()
             page = request.GET.get('page', 1)
-            paginator = Paginator(statuses, 10)
+            paginator = Paginator(statuses, 20)
 
             try:
                 statusex = paginator.page(page)

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    Billing 
+    Billing | TJ-101
 {% endblock title %}
 
 {% block stylesheet %}
@@ -15,14 +15,14 @@
     <div class="container mt-4">
         <div class="row">
             <div class='col-6 float-left'></div> 
-            <div class='col-10 float-right'>
+            <div class='col-12 float-right'>
                 <button class='btn btn-sm btn-primary mx-2 float-right'>Print</button>
                 <button class='btn btn-sm btn-primary float-right js-create-bills' 
                     data-url="{% url 'collection:create_bill' %}">New Bill</button>
             </div>
         </div>
         <div class="row mt-4">
-            <div class="">
+            <div class="col">
                 <div class="table-responsive">
                 <table class="display" id="tbl_bills" width="100%" cellspacing="0">   
                     <thead class="thead-light">

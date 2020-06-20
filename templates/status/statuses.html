@@ -28,9 +28,11 @@
                 <div class="row mb-2">
                     <div class="col-6 mb-2 float-left">
                         <form method="GET">
-                            {% for field in filter.form  %}
-                                {{field}}
-                            {% endfor %}
+                            Search: {{filter.form.client}} - {{filter.form.status_type}}
+
+                            {% comment %} {% for field in filter.form  %}
+                                Search: {{field.client}}
+                            {% endfor %} {% endcomment %}
                         </form>
                     </div>
                     <div class="col mb-2 float-right">

@@ -3,11 +3,8 @@ from django.http import HttpResponse, JsonResponse
 from django.forms.models import model_to_dict
 from django.template.loader import render_to_string
 
-from client.models import Bill
+from client.models import Bill, Payment
 from .forms import BillForm
-
-def collections(request):
-    return HttpResponse('Collection it is!')
 
 #bills
 def bills(request):
@@ -63,8 +60,14 @@ def delete_bill(request, pk):
     
     return JsonResponse(data)
 
+#payment
 
+def collections(request):
+    payments = Payment.objects.all()
+    return render(request, 'collection/collections.html', {'collections':payments})
 
+def payments(request):
+    return render(request, 'collection/payments.html')
 
 
     

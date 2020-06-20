@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% block title %}
+    Payment | TJ-101
+{% endblock title %}
+{% block content %}
+    {% include 'base/navbar.html' %}
+    <div class="container mt-2">
+        <div class="col"><h3>Payment Form</h3></div>
+        <div class="row">
+            <div class="col card">
+                <div class="card-body">
+                    <form action="">
+                          <div class="form-group row">
+                            <label for="input_search" class="col-sm-2 col-form-label">Enter client name/no:</label>
+                            <div class="col-sm-6 mx-0">
+                                <input type="text" class="form-control" id="input_search">
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm">Search</button>
+                        </div>
+                    </form>
+                </div>                
+            </div>
+        </div>
+    </div>
+{% endblock content %}
