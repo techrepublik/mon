@@ -121,4 +121,18 @@
         </div>
     {% endif %}
 {% endblock content %}
-    
+{% block javascript %}
+    <script>
+        $("#id_client").change(function(){
+            this.form.submit();
+        });
+        
+        $("#id_status_type").change(function(){
+            this.form.submit();
+        });
+
+        $('#newStatus').on('shown.bs.modal', function () {
+            $('.status_select_input').focus();
+        })  
+    </script>
+{% endblock javascript %}

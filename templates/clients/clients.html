@@ -57,6 +57,19 @@
         </div>
     {% endif %}
 {% endblock content %}
+{% block javascript %}
+    <script>
+        /*$(".js-create-client").click(function(){
+            //alert("Hello there!");
+            $("#id_client_no").focus();
+        }); */
+
+        $('#divClient').on('shown.bs.modal', function () {
+            $('#id_client_no').focus();
+        })  
+    </script>
+{% endblock javascript %}
+
 
     
     

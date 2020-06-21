@@ -12,11 +12,14 @@ class BillForm(forms.ModelForm):
                     'bill_amount', 'bill_note', 'bill_cancelled', 'updated_by']
         exclude = ['updated_by']
         widgets = {
-            'bill_date': DateInput(),
-            'bill_period_01': DateInput(),
-            'bill_period_02': DateInput(),
-            'bill_note': forms.Textarea(attrs={'rows':3}),
-            'client': forms.Select(attrs={'class': 'select-width'})
+            'bill_date': DateInput(attrs={'class': 'form-control-sm'}),
+            'bill_period_01': DateInput(attrs={'class': 'form-control-sm'}),
+            'bill_period_02': DateInput(attrs={'class': 'form-control-sm'}),
+            'bill_note': forms.Textarea(attrs={'rows':3,'class': 'form-control-sm', 'placeholder':'Bill note'}),
+            'client': forms.Select(attrs={'class': 'select-width form-control-sm'}),
+            'bill_no': forms.TextInput(attrs={'class':'form-control-sm', 'placeholder':'Bill no'}),
+            'bill_note': forms.TextInput(attrs={'class':'form-control-sm', 'placeholder':'Bill note'}),
+            'bill_amount': forms.TextInput(attrs={'class':'form-control-sm', 'placeholder':'Bill amount'}),
         }
 
 class PaymentForm(forms.ModelForm):

@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "f:\\personal\\pro\\hero\\Scripts\\python.exe",
+    "python.pythonPath": "/usr/bin/python",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true
 }

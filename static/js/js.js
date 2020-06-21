@@ -254,11 +254,6 @@ $("#newMonitor").on('submit', '.js-create-status-form', function () {
             return false;
           });
 
-      $("#id_client").change(function(){
-        this.form.submit();
-      });
       
-      $("#id_status_type").change(function(){
-        this.form.submit();
-      });
+
 });
