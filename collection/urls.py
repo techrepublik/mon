@@ -8,5 +8,7 @@ urlpatterns = [
     path('bills/create', views.create_bill, name='create_bill'),
     path('bills/<int:pk>/update', views.update_bill, name='update_bill'),
     path('bills/<int:pk>/delete', views.delete_bill, name='delete_bill'),
+    path('bills/<int:pk>/payment', views.bill_payment, name='payment_bill'),
     path('payments', views.payments, name='payments'),
+    
 ]

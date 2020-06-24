@@ -9,13 +9,17 @@
         <div class="row">
             <div class="col card">
                 <div class="card-body">
-                    <form action="">
-                          <div class="form-group row">
-                            <label for="input_search" class="col-sm-2 col-form-label">Enter client name/no:</label>
-                            <div class="col-sm-6 mx-0">
-                                <input type="text" class="form-control" id="input_search">
+                    <form method="GET">
+                        <div class="row">
+                            <div class="col-6 ">
+                                Select client:
+                                <select name="client_name" class="form-control form-control-sm">
+                                    <option disable="true" selected>---Select a client---</option>
+                                    {% for client in clients %}
+                                        <option value="{{ client.id }}">{{ client.client_name }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
-                            <button type="button" class="btn btn-secondary btn-sm">Search</button>
                         </div>
                     </form>
                 </div>                

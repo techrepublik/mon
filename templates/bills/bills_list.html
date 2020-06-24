@@ -16,6 +16,11 @@
                 data-url="{% url 'collection:delete_bill' bill.pk %}">
                 <span class="glyphicon glyphicon-trash"></span> Delete
             </button>
+            <button type="button"
+                class="btn btn-outline-success btn-sm js-payment-bill"
+                data-url="{% url 'collection:delete_bill' bill.pk %}">
+                <span class="glyphicon glyphicon-trash"></span> Payment
+            </button>
         </td>
     </tr>
 {% empty %}

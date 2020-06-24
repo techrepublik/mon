@@ -18,6 +18,10 @@ def list_client(request):
     clients = Client.objects.all()
     return render(request, 'clients/clients.html', {'clients': clients})
 
+def get_client(request, pk):
+    client = get_object_or_404(Client, pk=pk)
+    return render(request, 'collection/payments.html', {'client':client})
+
 def new_client(request):
     if request.method == 'POST':
         form    = ClientForm(request.POST)
