@@ -82,7 +82,12 @@ var saveFormBill = function() {
       dataType: 'json',
       success: function (data) {
         if (data.form_is_valid) {
-          $("#tbl_bills tbody").html(data.bills_list);
+          if ($(".js-payment-bill-form")){
+            alert('Payment generated successfully!')
+          }
+          else{
+            $("#tbl_bills tbody").html(data.bills_list);
+          }
           $("#div_bills").modal("hide");
         }
         else {
@@ -107,6 +112,7 @@ $("#div_bills").on("submit", ".js-bill-delete-form", saveFormBill);
 
 // Payment bill
 $("#tbl_bills").on("click", ".js-payment-bill", loadFormBill);
+$("#div_bills").on("submit", ".js-payment-bill-form", saveFormBill);
 
 
 $("#monitorTable").on('click', '.js-create-status', function () {

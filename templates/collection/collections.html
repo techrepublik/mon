@@ -16,28 +16,28 @@
         <div class="row mt-4">
             <div class="col">
                 <div class="table-responsive">
-                    <table class="display" id="tbl_bills" width="100%" cellspacing="0">   
+                    <table class="display" id="tbl_collections" width="100%" cellspacing="0">   
                         <thead class="thead-light">
                             <tr>
-                                <th>Ref No</th>
+                                <th class="text-right">Ref No</th>
                                 <th>Client</th>
                                 <th>Date</th>
                                 <th>Type</th>
-                                <th>Cheque No</th>
-                                <th>Cancelled</th>
-                                <th>Amount</th>
+                                <th class="text-right">Cheque No</th>
+                                <th class="text-center">Cancelled</th>
+                                <th class="text-right">Amount</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for payment in collections %}
                                 <tr>
-                                    <td>{{payment.receipt_no}}</td>
+                                    <td class="text-right">{{payment.receipt_no}}</td>
                                     <td>{{payment.bill.client}}</td>
                                     <td>{{payment.receipt_date}}</td>
                                     <td>{{payment.receipt_type}}</td>
-                                    <td>{{payment.receipt_cheque_no}}</td>
-                                    <td>{{payment.receipt_cancelled}}</td>
-                                    <td>{{payment.receipt_amount}}</td>
+                                    <td class="text-right">{{payment.receipt_cheque_no}}</td>
+                                    <td class="text-center">{{payment.receipt_cancelled}}</td>
+                                    <td class="text-right">{{payment.receipt_amount}}</td>
                                 </tr>
                             {% empty %}
                                 <tr>

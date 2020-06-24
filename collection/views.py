@@ -68,9 +68,9 @@ def payment_bill(request, pk):
     if (request.method == 'POST'):
         form  = PaymentForm(request.POST, initial={'bill':bill})
         if (form.is_valid()):
-            # status = form.save(commit=False)
-            # status.client = client
-            form.save()
+            payment = form.save(commit=False)
+            payment.updated_by = request.user
+            payment.save()
             data['form_is_valid'] = True
         else:
             data['form_is_valid'] = False

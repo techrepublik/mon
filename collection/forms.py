@@ -32,8 +32,8 @@ class PaymentForm(forms.ModelForm):
         widgets ={
             'bill' : forms.Select(attrs={'class': 'form-control-sm'}),
             'receipt_no' : forms.TextInput(attrs={'class':'form-control-sm', 'placeholder': 'Enter receipt no'}),
-            'receipt_date': forms.DateInput(attrs={'class': 'form-control-sm'}),
-            'receipt_amount': forms.NumberInput(attrs={'class': 'form-control-sm'}),
+            'receipt_date': DateInput(attrs={'class': 'form-control-sm'}),
+            'receipt_amount': forms.NumberInput(attrs={'class': 'form-control-sm text-right'}),
             'receipt_type': forms.Select(attrs={'class': 'form-control-sm'}),
             'receipt_cheque_no': forms.TextInput(attrs={'class': 'form-control-sm', 'placeholder': 'Enter cheque number'}),
             'receipt_note' : forms.Textarea(attrs={'rows': 2, 'class': 'form-control-sm', 'placeholder': 'Enter a note'})

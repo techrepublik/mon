@@ -3,56 +3,68 @@
 <form method="post" class="js-payment-bill-form" action="{% url 'collection:payment_bill' form.initial.bill.pk %}">
     {% csrf_token %}
     <div class="modal-header">
-          <h5 class="modal-title">Payment for Client: {{form.initial.bill.client.client_name}}</h5>
+          <h5 class="modal-title">Payment Form</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
             <div class="col">
-                Client: {{form.initial.bill.client.client_name}}
+                <h5>Client: <strong> {{form.initial.bill.client.client_name}}</strong></h5>
+            </div>
+            <div class="col">
+              <h6 class="text-muted small"><strong>Bill Detail:</strong></h6>
+              <div class="row">
+                <div class="col-md-4">Bill no:</div>
+                <div class="col-md-4 text-right">{{form.initial.bill.bill_no}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 ">Amount:</div>
+                <div class="col-md-4 text-right">{{form.initial.bill.bill_amount}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">Bill Date:</div>
+                <div class="col-md-4 text-right">{{form.initial.bill.bill_date}}</div>
+              </div>
             </div>
             <hr>
-            {{form | crispy}}
 
-            {% comment %} <div class="form-row">
-              <div class="form-group col-md-12 mb-0">
-                {{form.client | as_crispy_field}}
+            <div class="form-row">
+              <div class="col-md-6 mb-0">
+                {{form.bill | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 mb-0">
+                {{form.receipt_no | as_crispy_field}}
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6 mb-0">
-                {{form.bill_no | as_crispy_field}}
+                {{form.receipt_date | as_crispy_field}}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{form.receipt_type | as_crispy_field}}
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6 mb-0">
-                {{form.bill_date | as_crispy_field}}
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6 mb-0">
-                {{form.bill_period_01 | as_crispy_field}}
+                {{form.receipt_cheque_no | as_crispy_field}}
               </div>
               <div class="form-group col-md-6 mb-0">
-                {{form.bill_period_02 | as_crispy_field}}
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6 mb-0">
-                {{form.bill_amount | as_crispy_field}}
+                {{form.receipt_amount | as_crispy_field}}
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-12 mb-0">
-                {{form.bill_note | as_crispy_field}}
+                {{form.receipt_note | as_crispy_field}}
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-6 mb-0">
-                {{form.bill_cancelled | as_crispy_field}}
+              <div class="form-group col-md-12 mb-0">
+                {{form.receipt_cancelled | as_crispy_field}}
               </div>
-            </div> {% endcomment %}
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
