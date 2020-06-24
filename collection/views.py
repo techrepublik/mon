@@ -62,11 +62,11 @@ def delete_bill(request, pk):
     
     return JsonResponse(data)
 
-def bill_payment(request, pk):
+def payment_bill(request, pk):
     data = dict()
     bill =  get_object_or_404(Bill, pk=pk)
     if (request.method == 'POST'):
-        form  = StatusForm(request.POST, initial={'bill':bill})
+        form  = PaymentForm(request.POST, initial={'bill':bill})
         if (form.is_valid()):
             # status = form.save(commit=False)
             # status.client = client
@@ -75,7 +75,7 @@ def bill_payment(request, pk):
         else:
             data['form_is_valid'] = False
     else:
-        form = StatusForm(initial={'bill':bill})
+        form = PaymentForm(initial={'bill':bill})
     flag1 = False
     context = {'form': form, 'flag1': flag1}
     data['html_form'] = render_to_string('collection/bill-payment.html', context, request=request)

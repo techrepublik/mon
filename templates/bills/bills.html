@@ -53,14 +53,19 @@
 {% endblock content %}
 {% block javascript %}
     <script>
-        $('#div_bills').on('shown.bs.modal', function () {
-            $('#id_client').focus();
-            $(".modal-title").text("New bill for " + $("#id_client option:selected").text())
+        {% comment %} $('#div_bills').on('shown.bs.modal', function () {
+            if ($(".js-payment-bill")){
+                $(".modal-title").text("Payemnt for " + $("#id_client option:selected").text())
+            }
+            esle{
+                $('#id_client').focus();
+                $(".modal-title").text("New bill for " + $("#id_client option:selected").text())
+            }
 
             $("#id_client").change(function(){
                 var client = $("#id_client option:selected").text();
                 $(".modal-title").text("New bill for " + client);
             })
-        })
+        }) {% endcomment %}
     </script>
 {% endblock javascript %}

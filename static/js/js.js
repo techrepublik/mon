@@ -101,9 +101,12 @@ $("#div_bills").on("submit", ".js-create-bill-form", saveFormBill);
 $("#tbl_bills").on("click", ".js-update-bill", loadFormBill);
 $("#div_bills").on("submit", ".js-update-bill-form", saveFormBill);
 
-//Delete client
+//Delete bill
 $("#tbl_bills").on("click", ".js-delete-bill", loadFormBill);
 $("#div_bills").on("submit", ".js-bill-delete-form", saveFormBill);
+
+// Payment bill
+$("#tbl_bills").on("click", ".js-payment-bill", loadFormBill);
 
 
 $("#monitorTable").on('click', '.js-create-status', function () {

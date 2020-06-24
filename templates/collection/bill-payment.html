@@ -1,0 +1,61 @@
+{% load crispy_forms_tags %}
+
+<form method="post" class="js-payment-bill-form" action="{% url 'collection:payment_bill' form.initial.bill.pk %}">
+    {% csrf_token %}
+    <div class="modal-header">
+          <h5 class="modal-title">Payment for Client: {{form.initial.bill.client.client_name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="col">
+                Client: {{form.initial.bill.client.client_name}}
+            </div>
+            <hr>
+            {{form | crispy}}
+
+            {% comment %} <div class="form-row">
+              <div class="form-group col-md-12 mb-0">
+                {{form.client | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_no | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_date | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_period_01 | as_crispy_field}}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_period_02 | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_amount | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12 mb-0">
+                {{form.bill_note | as_crispy_field}}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{form.bill_cancelled | as_crispy_field}}
+              </div>
+            </div> {% endcomment %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
+        </div>
+</form>
