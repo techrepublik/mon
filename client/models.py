@@ -60,6 +60,7 @@ class Bill(models.Model):
     updated_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bill_users')
 
     class Meta:
+        indexes = [models.Index(fields=['bill_date'])]
         ordering = ['-bill_date']
         verbose_name = 'billing'
         verbose_name_plural = 'billings'
@@ -86,6 +87,7 @@ class Payment(models.Model):
     updated_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='payment_users')
 
     class Meta:
+        indexes = [models.Index(fields=['receipt_date'])]
         ordering = ['-receipt_date']
         verbose_name = 'Payment'
         verbose_name_plural = 'Payments'

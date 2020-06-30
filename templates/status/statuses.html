@@ -71,7 +71,7 @@
                                         {% if statuses.has_other_pages %}
                                             <ul class="pagination justify-content-end">
                                                 {% if statuses.has_previous %}
-                                                    <li class="page-item">
+                                                    <li class="page-item btn-secondary">
                                                         <a class="page-link" href="?page={{ statuses.previous_page_number }}">&laquo;</a>
                                                     </li>
                                                 {% else %}
@@ -80,15 +80,15 @@
                                                     </li>
                                                 {% endif %}
                                                 {% for i in statuses.paginator.page_range %}
-                                                {% if statuses.number == i %}
-                                                    <li class="page-item active" aria-current="page">
-                                                        <a class="page-link" href="#"><span>{{ i }} <span class="sr-only">(current)</span></span></a>
-                                                    </li>
-                                                {% else %}
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
-                                                    </li>
-                                                {% endif %}
+                                                    {% if statuses.number == i %}
+                                                        <li class="page-item active" aria-current="page">
+                                                            <a class="page-link" href="#"><span>{{ i }} <span class="sr-only">(current)</span></span></a>
+                                                        </li>
+                                                    {% elif i > statuses.number|add:'-5' and i < statuses.number|add:'5' %}
+                                                        <li class="page-item">
+                                                            <a class="page-link " href="?page={{ i }}">{{ i }}</a>
+                                                        </li>
+                                                    {% endif %}
                                                 {% endfor %}
                                                 {% if statuses.has_next %}
                                                     <li class="page-item">

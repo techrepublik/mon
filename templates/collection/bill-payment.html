@@ -1,5 +1,18 @@
 {% load crispy_forms_tags %}
 
+<div class="">
+    {% if messages %}
+        {% for message in messages %}
+        {% comment %} <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script> {% endcomment %}
+            <ul>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% endif %}
+</div>
+
 <form method="post" class="js-payment-bill-form" action="{% url 'collection:payment_bill' form.initial.bill.pk %}">
     {% csrf_token %}
     <div class="modal-header">
@@ -10,7 +23,7 @@
         </div>
         <div class="modal-body">
             <div class="col">
-                <h5>Client: <strong> {{form.initial.bill.client.client_name}}</strong></h5>
+                <h5><strong>{{form.initial.bill.client.client_name}}</strong><span class="small badge badge-info mx-2">{{form.initial.bill.bill_amount}}</span></h5>
             </div>
             <div class="col">
               <h6 class="text-muted small"><strong>Bill Detail:</strong></h6>
@@ -27,6 +40,7 @@
                 <div class="col-md-4 text-right">{{form.initial.bill.bill_date}}</div>
               </div>
             </div>
+
             <hr>
 
             <div class="form-row">

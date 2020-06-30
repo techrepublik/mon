@@ -12,7 +12,21 @@
 
 {% block content %}
     {% include 'base/navbar.html' %}
+
     <div class="container mt-4">
+        <div class="">
+            {% if messages %}
+                {% for message in messages %}
+                {% comment %} <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script> {% endcomment %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            {% endif %}
+        </div>
+
         <div class="row">
             <div class='col-6 float-left'></div> 
             <div class='col-12 float-right'>
@@ -54,16 +68,13 @@
 {% block javascript %}
     <script>
         $('#div_bills').on('shown.bs.modal', function () {
-            if ($('.js-payment-bill'))
-                $('#id_receipt_no').focus();
-            else{
-                
-                $('#id_client').focus();
-                $(".modal-title").text("New bill for " + $("#id_client option:selected").text())
-            }
+            $('#id_receipt_no').focus();
+            $('#id_client').focus();
+            $(".m-title").text("New bill for " + $("#id_client option:selected").text());
+
             $("#id_client").change(function(){
                 var client = $("#id_client option:selected").text();
-                $(".modal-title").text("New bill for " + client);
+                $(".m-title").text("New bill for " + client);
             })
         })
     </script>

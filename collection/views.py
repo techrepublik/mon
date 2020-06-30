@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.forms.models import model_to_dict
 from django.template.loader import render_to_string
+from django.contrib import messages
 
 from client.models import Bill, Payment, Client, Payment
 from .forms import BillForm, PaymentForm
@@ -72,10 +73,12 @@ def payment_bill(request, pk):
             payment.updated_by = request.user
             payment.save()
             data['form_is_valid'] = True
+            messages.success(request, f"Payment made successfully.")
         else:
             data['form_is_valid'] = False
+            messages.success(request, f"Payment made successfully.")
     else:
-        form = PaymentForm(initial={'bill':bill})
+        form = PaymentForm(initial={'bill':bill, 'receipt_amount':bill.bill_amount})
     flag1 = False
     context = {'form': form, 'flag1': flag1}
     data['html_form'] = render_to_string('collection/bill-payment.html', context, request=request)

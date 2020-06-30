@@ -112,7 +112,7 @@ def status_list(request):
     status_filter = StatusFilter(request.GET, queryset=statuses)
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(status_filter.qs, 20)
+    paginator = Paginator(status_filter.qs, 15)
 
     try:
         statusex = paginator.page(page)

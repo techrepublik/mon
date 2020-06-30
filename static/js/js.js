@@ -82,12 +82,12 @@ var saveFormBill = function() {
       dataType: 'json',
       success: function (data) {
         if (data.form_is_valid) {
-          if ($(".js-payment-bill-form")){
-            alert('Payment generated successfully!')
-          }
-          else{
+          // if ($(".js-payment-bill-form")){
+          //   alert('Payment generated successfully!')
+          // }
+          // else{
             $("#tbl_bills tbody").html(data.bills_list);
-          }
+          //}
           $("#div_bills").modal("hide");
         }
         else {
