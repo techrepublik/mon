@@ -30,7 +30,7 @@ class PaymentForm(forms.ModelForm):
             'receipt_cancelled', 'receipt_type', 'receipt_cheque_no', 'receipt_note', 'updated_by']
         exclude = ['updated_by']
         widgets ={
-            'bill' : forms.Select(attrs={'class': 'form-control-sm', 'disabled':'True' }),
+            'bill' : forms.Select(attrs={'class': 'form-control-sm'}),
             'receipt_no' : forms.TextInput(attrs={'class':'form-control-sm', 'placeholder': 'Enter receipt no'}),
             'receipt_date': DateInput(attrs={'class': 'form-control-sm'}),
             'receipt_amount': forms.NumberInput(attrs={'class': 'form-control-sm text-right'}),
